@@ -1,11 +1,11 @@
-/* body{
-    background-color: rgb(211, 240, 247);
-} */
+
 body {
     background-color: rgb(247, 243, 238);
     width: 1550px;
     margin: 0 auto;
     font-family: sans-serif;
+
+  
   }
 
 
@@ -16,9 +16,7 @@ div {
   }
   
 
-  p{
-    color: black;
-}
+ 
 
 @media screen and (max-width: 768px) {
     p{
@@ -32,4 +30,4 @@ div {
      }
  }
 
-  
+ 
