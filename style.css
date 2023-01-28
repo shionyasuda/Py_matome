@@ -16,18 +16,18 @@ div {
   }
   
 
- 
-
-@media screen and (max-width: 768px) {
+  p{
+    color: black;
+  }
+  
+  @media screen and (max-width: 768px) {
     p{
       color: black;
      }
- }
- 
- @media screen and (max-width: 480px) {
+  }
+  
+  @media screen and (max-width: 480px) {
     p{
       color: black;
      }
- }
-
- 
+  }
