@@ -1,9 +1,9 @@
 
 body {
     background-color: rgb(247, 243, 238);
-    width: 1550px;
-    margin: 0 auto;
+    margin: 10px;
     font-family: sans-serif;
+
 
   
   }
@@ -20,6 +20,13 @@ div {
     color: black;
   }
   
+
+  @media screen and (max-width: 1550px) {
+    p{
+      color: black;
+     }
+  }
+
   @media screen and (max-width: 768px) {
     p{
       color: black;
@@ -31,3 +38,5 @@ div {
       color: black;
      }
   }
+
+  
