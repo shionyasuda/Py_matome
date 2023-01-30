@@ -1,7 +1,7 @@
 
 body {
     background-color: rgb(227, 244, 231);
-    margin: 0 auto;
+    margin: 20px ;
     font-family: sans-serif;
     
 
@@ -19,6 +19,7 @@ div {
   .box11{
     padding: 0.5em 1em;
     margin: 2em 0;
+    margin-right: 40px;
     color: #5d627b;
     background: white;
     border-top: solid 5px #5d627b;
