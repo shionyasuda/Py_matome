@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div><h1>K近傍法</h1></div>
+    <h1>K近傍法</h1>
     <p>教師あり学習の一つで、データの分類予測に用いられる。予測したいXの周辺にあるデータを使用し多数決が行われる。例えばKを3に設定した場合、Xから最も近い3つのデータが取得され、最も多かったものに分類される。</p>
 
     <P>とりあえずは呼び出し</P>
@@ -18,19 +18,59 @@
     <div class="box11">
         <p>kn = KNeighborsClassifier()</p>
         <p>kn3 = KNeighborsClassifier(n_neighbors=3)</p>
-    </div>
+      </div>
     <P>fit()はモデルを学習させる際に使用。トレインデータにはデータと答えを同時に渡してあげる必要あり。</P>
     <div class="box11">
       <p>kn = kn.fit(train_x,train_y)</p>
     </div>
-    <P>Predic()tは完成したモデルでテストデータを予測する際に使用。</P>
+    <P>predic()tは完成したモデルでテストデータを予測する際に使用。</P>
     <div class="box11">
       <p>kn.predict(test_x)</p>
     </div>
-    <P>最後に、Score()でモデルの精度を確認。</P>
+    <P>最後に、score()でモデルの精度を確認。</P>
     <div class="box11">
       <p>kn.score(test_x,test_y)</p>
     </div>
+    <h1>実践練習</h1>
+    <p>魚の分別をするモデルを作成する。2種類の魚が存在し、グラフで表示するとこうなる。</p>
+    <div><image class="image11" id="serviceFrameSend" src="src/fish_scatter.png" width="500" height="325"  frameborder="0"></image></div>
+    <p>トレインデータとテストデータに分別したのち、モデルの作成をする。stratify=df_yを使用すると、分けた際の比率が同じようになる。</p>
+    <div class="box11">
+      <p>from sklearn.model_selection import train_test_split</p>
+        <p>train_x, test_x, train_y, test_y = train_test_split(data, target, stratify=df_y,random_state=42)</p>
+    </div>
+    <P>その結果100％一致するモデルが完成できた。</P>
+    <div class="box11">
+      <p>from sklearn.neighbors import KNeighborsClassifier</p>
+      <p>kn = KNeighborsClassifier()</p>
+      <p>kn = kn.fit(train_x,train_y)</p>
+      <p>kn.score(test_x,test_y)</p>
+    </div>
+    <p>しかしながら問題はここからである。25センチ、150グラムの魚を予測すると、結果は0となっている。場所をグラフで確認してみると、どう見ても1であることがわかる。</p>
+      <div><image class="image11" id="serviceFrameSend" src="src/predict.png" width="500" height="325"  frameborder="0"></image></div>
+    <p>原因は説明変数の標準化をしてないためである。長さと重さの単位が違うため、標準化してモデルを作ってあげる必要がある。</p>
+    <p>それぞれ必要な計算をし、</p>
+    <div class="box11">
+      <p>mean = np.mean(df_fish['Length'])</p>
+      <p>std = np.std(df_fish['Length'])</p>
+      <p>mean2 = np.mean(df_fish['Weight'])</p>
+      <p>std2 = np.std(df_fish['Weight'])</p>
+    </div>
+    <p>説明変数のみが標準化されたデータを作る</p>
+    <div class="box11">
+      <p>df_length = (df_fish['Length'] - mean)/std</p>
+      <p>df_weight = (df_fish['Weight'] - mean2)/std2</p>
+      <p>fish_data = pd.DataFrame(
+        data = {
+            'Length':df_length ,
+            'Weight':df_weight,
+            'Target':df_fish['target']
+        }
+    )</p>
+      <p>fish_data</p>
+    </div>
+
+    <p>このデータを使いモデルを作成することで、精度は上がるようになる。</p>
     <h3><button><a href="../index.html">Home</a></button></h3>
   </body>
 </html>

@@ -8,13 +8,13 @@ body {
   
   }
 
-
-
-div {
+  div {
     position:relative;
     left: 30px;
     top:15x;
   }
+
+
 
   .box11{
     padding: 0.5em 1em;
