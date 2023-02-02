@@ -1,0 +1,38 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>K近傍法回帰</h1>
+    <p>K近傍法を使った回帰のモデルである。未知のデータと近いK個分のデータを集め、その平均で具体的な数字を予測する。</p>
+    <P>とりあえずは呼び出し</P>
+    <div class="box11">
+        <p>from sklearn.neighbors import KNeighborsRegressor</p>
+        <p>knr = KNeighborsRegressor()</p>
+    </div>
+    <P>モデルに教師データを与え、学習させる。</P>
+    <div class="box11">
+        <p>knr.fit(train_x,train_y)</p>
+    </div>
+    <P>分類問題で使用したscore()を使用してみる。が、回帰の問題ではこのメソッドは当てにならず、違う方法で精度を確認する必要がある。</P>
+    <div class="box11">
+        <p>knr.score(test_x,test_y)</p>
+    </div>
+    <P>このメソッドでは、予測結果と答えに生じる誤差の絶対値を平均してくれる。表示された数字が小さければ小さいほどモデルの性能が良いことになる。</P>
+    <div class="box11">
+        <p>from sklearn.metrics import mean_absolute_error</p>
+        <p>test_prediction = knr.predict(test_x)</p>
+        <p>mae = mean_absolute_error(test_y,test_prediction)</p>
+        <p>print(mae))</p>
+    </div>
+    <P>また、グラフで可視化することで、視覚的にモデルの性能を把握できる。</P>
+    <div><image class="image11" id="serviceFrameSend" src="src/魚誤差2.png" width="500" height="325"  frameborder="0"></image></div>
+
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 
