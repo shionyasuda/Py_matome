@@ -1,0 +1,71 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>単回帰</h1>
+    <p>データに最適な線型方程式を見つけ、未知のデータを予測するもの。直線的（y=ax+b）に予測。</p>
+
+    <P>まずはライブラリの呼び出し。</P>
+    <div class="box11">
+        <p>from sklearn.linear_model import LinearRegression</p>
+        <p>lr = LinearRegression()</p>
+    </div>
+    <P>fit()でモデルを学習させる。</P>
+    <div class="box11">
+        <p>lr.fit(train_x,train_y)</p>
+    </div>
+    <P>精度の確認</P>
+    <div class="box11">
+        <p>lr.score(test_x,test_y)</p>
+    </div>
+    <P>可視化して精度の確認すると、誤差がやや大きく思える。</P>
+    <div class="box11">
+        <p>plt.scatter(train_x,train_y)</p>
+        <p>plt.plot([15,50],[15*lr.coef_+lr.intercept_,50*lr.coef_+lr.intercept_])</p>
+        <p>plt.scatter(50,1241.8, marker='^')</p>
+    </div>
+    <div><image class="image11" id="serviceFrameSend" src="src/線形.png" width="500" height="325"  frameborder="0"></image></div>
+    
+    <h1>多項式回帰</h1>
+    <P>説明変数を2乗し、二次関数でのモデル作成を試みる。曲線を適応（y=ax**2+bx+c）</P>
+    <div class="box11">
+      <p>train_poly = np.column_stack((train_x**2,train_x))</p>
+      <p>test_poly = np.column_stack((test_x**2,test_x))</p>
+  </div>
+  <P>データの傾きと切片を確認する。</P>
+    <div class="box11">
+      <p>print(lr.coef_,lr.intercept_)</p>
+      
+  </div>
+  <P>モデルを学習させ、可視化してみると随分と性能が上がっているのがわかる。</P>
+  <div class="box11">
+  <p>plt.scatter(train_x,train_y)</p>
+  <p>plt.plot(point,1.01*point**2 - 21.6*point+116.05)</p>
+  <p>plt.scatter(50,1574,marker='^')</p>
+  <p>plt.scatter(50,1574,marker='^')</p>
+  </div>
+  <div><image class="image11" id="serviceFrameSend" src="src/二次関数.png" width="500" height="325"  frameborder="0"></image></div>
+
+  <h1>重回帰</h1>
+  <p>説明変数が2個以上の場合で使用。</p>
+  <P>まずは説明変数を増やしてくれるメソッドを使用。</P>
+  <div class="box11">
+    <p>poly = PolynomialFeatures(degree=2, include_bias=False)</p>
+    <p>poly.fit(train_x)</p>
+    <p>train_poly = poly.transform(train_x)</p>
+</div>
+<P>上記によって（42,9）のデータフレームができたので、このまま線形回帰をする。</P>
+ 
+
+
+
+
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 
