@@ -37,6 +37,14 @@
       <p>train_poly = np.column_stack((train_x**2,train_x))</p>
       <p>test_poly = np.column_stack((test_x**2,test_x))</p>
   </div>
+  
+  <P>あるいは、二次関数、、三次関数のモデルを作る際に使えるメソッド。dgreeの値を帰ることで適応。</P>
+  <div class="box11">
+    <p>from sklearn.preprocessing import PolynomialFeatures</p>
+    <p>poly = PolynomialFeatures(degree=2, include_bias=False)</p>
+    <p>poly.fit(train_x)</p>
+    <p>train_poly = poly.transform(train_x)</p>
+</div>
   <P>データの傾きと切片を確認する。</P>
     <div class="box11">
       <p>print(lr.coef_,lr.intercept_)</p>
@@ -51,15 +59,7 @@
   </div>
   <div><image class="image11" id="serviceFrameSend" src="src/二次関数.png" width="500" height="325"  frameborder="0"></image></div>
 
-  <h1>重回帰</h1>
-  <p>説明変数が2個以上の場合で使用。</p>
-  <P>まずは説明変数を増やしてくれるメソッドを使用。</P>
-  <div class="box11">
-    <p>poly = PolynomialFeatures(degree=2, include_bias=False)</p>
-    <p>poly.fit(train_x)</p>
-    <p>train_poly = poly.transform(train_x)</p>
-</div>
-<P>上記によって（42,9）のデータフレームができたので、このまま線形回帰をする。</P>
+ 
  
 
 
