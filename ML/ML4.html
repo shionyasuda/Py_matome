@@ -1,0 +1,49 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+        <h1>ロジスティック回帰</h1>
+        <p>説明変数を用いて確立を導き、それをもとに分類する手法</p>
+    <P>トレインデータとテストデータの説明変数を標準化</P>
+    <div class="box11">
+        <p>from sklearn.preprocessing import StandardScaler</p>
+        <p>sc = StandardScaler()</p>
+        <p>train_scaled = sc.fit_transform(train_x)</p>
+        <p>train_scaled = pd.DataFrame(train_scaled, columns=train_x.columns)</p>
+    </div>
+
+    <P>とりあえずは呼び出し</P>
+    <div class="box11">
+        <p>from sklearn.linear_model import LogisticRegression</p>
+    </div>
+    <P>Cは正規化のパラメータで、小さくするほど強くなる。</P>
+    <div class="box11">
+        <p>lr = LogisticRegression(C=30, max_iter=1000)</p>
+    </div>
+    <P>モデルを学習させる</P>
+    <div class="box11">
+        <p>lr.fit(train_scaled,train_y)</p>
+    </div>
+    <P>スコアで性能評価</P>
+    <div class="box11">
+        <p>print(lr.score(train_scaled,train_y))</p>
+        <p>print(lr.score(test_scaled,test_y))</p>
+    </div>
+    <P>precict()で予測し、それぞれの確立を確認。
+    </P>
+    <div class="box11">
+        <p>print(lr.predict(test_scaled[:5]))</p>
+        <p>proba = lr.predict_proba(test_scaled[:5])</p>
+        <p>print(np.round(proba,decimals=3))</p>
+    </div>
+    
+   
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 
