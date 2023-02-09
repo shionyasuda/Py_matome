@@ -1,0 +1,42 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>データの整理段階で使用するツール</h1>
+
+    <P>標準化</P>
+    <div class="box11">
+        <p>from sklearn.preprocessing import StandardScaler</p>
+        <p>sc = StandardScaler()</p>
+        <p>sc.fit_transform(train_x)</p>
+        <p>train_scaled = sc.transform(train_x)</p>
+        <p>test_scaled = sc.transform(test_x)</p>
+    </div>
+    <P>ホールドアウト法</P>
+    <div class="box11">
+        <p>from sklearn.model_selection import train_test_split</p>
+        <p>train_x, test_x, train_y, test_y = train_test_split(data,target,test_size=0.2, random_state=42)</p>
+    </div>
+    <P>交差検証</P>
+    <div class="box11">
+        <p>from sklearn.model_selection import cross_validate</p>
+        <p>from sklearn.model_selection import StratifiedKFold</p>
+        <p>scores = cross_validate(dt, train_x,train_y, cv=StratifiedKFold())</p>
+        <p>print(np.mean(scores['test_score']))</p>
+    </div>
+
+
+    <P>nanの見分け</P>
+    <div class="box11">
+        <p>df.info()</p>
+    </div>
+   
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 

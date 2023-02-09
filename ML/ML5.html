@@ -1,0 +1,42 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>決定木</h1>
+    <p>枝分かれするツリーのようなモデルを作り、分類するアルゴリズム。標準化必要なし。</p>
+
+    <P>まずはライブラリの呼び出し。max_depthの部分を変えることで、ツリーの深さを決定する。</P>
+    <div class="box11">
+        <p>from sklearn.tree import DecisionTreeClassifier </p>
+        <p>dt = DecisionTreeClassifier(max_depth=3)</p>
+    </div>
+    <P>fit()でモデルを学習させる。</P>
+    <div class="box11">
+        <p>dt.fit(train_scaled,train_y)</p>
+    </div>
+    <P>精度の確認</P>
+    <div class="box11">
+        <p>print(dt.score(train_x,train_y))</p>
+        <p>print(dt.score(test_x,test_y))</p>
+    </div>
+    <P>可視化してツリーを確認。filld=Trueにすることで、図に色付けをする。</P>
+    <div class="box11">
+        <p>plt.figure(figsize=(10,7))</p>
+        <p>plot_tree(dt, filled=True, feature_names=['alcohol','sugar','pH'])</p>
+        <p>plt.show()</p>
+    </div>
+    <div><image class="image11" id="serviceFrameSend" src="src/dicisiontree.png" width="700" height="450"  frameborder="0"></image></div>
+    <P>giniの部分を確認することで、モデルの不純度がわかる。数字がゼロに近いほど不純度は低く、綺麗に分類できていることになる。</P>
+    <P>カラムごとの重要度を確認。</P>
+    <div class="box11">
+        <p>print(dt.feature_importances_)</p>
+    </div>
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 
