@@ -1,0 +1,57 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width">
+    <title>パイソンまとめ</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>ランダムフォレスト</h1>
+    <p>決定技をいくつも作り、その結果の平均値を取る手法。</p>
+
+    <P>交差検証のライブラリを呼び出す。</P>
+    <div class="box11">
+        <p>from sklearn.model_selection import cross_validate</p>
+    </div>
+    <P>ランダムフォレスとを呼び出し、モデルを学習させる。最後に交差検証でスコアチェック。</P>
+    <div class="box11">
+        <p>from sklearn.ensemble import RandomForestClassifier</p>
+        <p>rf = RandomForestClassifier(n_jobs=-1)</p>
+        <p>scores = cross_validate(rf, train_x,train_y, return_train_score=True ,n_jobs=-1)</p>
+        <p>print(np.mean(scores['train_score']),(np.mean(scores['test_score'])))</p>
+    </div>
+    <P>重要度の確認</P>
+    <div class="box11">
+        <p>rf.fit(train_x,train_y)</p>
+        <p>print(rf.feature_importances_)</p>
+    </div>
+    <h1>勾配ブースティング</h1>
+    <div class="box11">
+        <p>from sklearn.ensemble import GradientBoostingClassifier</p>
+        <p>gb = GradientBoostingClassifier(n_estimators=100,learning_rate=0.2)</p>
+        <p>scores = cross_validate(gb, train_x,train_y, return_train_score=True ,n_jobs=-1)</p>
+        <p>print(np.mean(scores['train_score']),(np.mean(scores['test_score'])))</p>
+    </div>
+
+    <h1>HistGradientBoostingTree</h1>
+    <div class="box11">
+        <p>from sklearn.experimental import enable_hist_gradient_boosting</p>
+        <p>from sklearn.ensemble import HistGradientBoostingClassifier</p>
+        <p>hgb = HistGradientBoostingClassifier()</p>
+        <p>scores = cross_validate(hgb, train_x,train_y, return_train_score=True ,n_jobs=-1)</p>
+        <p>print(np.mean(scores['train_score']),(np.mean(scores['test_score'])))</p>
+    </div>
+
+    <p>重要度の確認</p>
+    <div class="box11">
+        <p>from sklearn.inspection import permutation_importance</p>
+    <p>hgb.fit(train_x,train_y)</p>
+    <p>result = permutation_importance(hgb, train_x,train_y,n_repeats=10 ,n_jobs=-1)</p>
+    <p>print(result.importances_mean)</p>
+    </div>
+    
+
+    <h3><button><a href="../index.html">Home</a></button></h3>
+  </body>
+</html> 
